@@ -50,15 +50,16 @@ console.log("Average age %i", list.reduce((sum, {
     return Math.abs(ageDate.getUTCFullYear() - 1970) + sum;
 }, 0) / list.length);
 
+//Funcion que sirve para validar mes y dia de nacimiento
 function getAge(birthday) {
-    //Funcion que valida mes y dia de nacimiento
-    //La funcion sirve de manera que se obtiene la fecha actual (fact)
-    //y la fecha de nacimiento se da en formato fecha
-    //El if verifica que si esta en un mes menor y dia y mes igual al de nacimiento,
-    //Este if toma en cuenta que aun no se ha cumplido anhios y se le resta a uno puesto que la resta de anhios no considera dia y mes
+    //Obtiene la fecha actual
     var fact = new Date(Date.now());
+    //Obtiene la fecha de nacimiento.
     birthday = new Date(birthday);
     var edad = fact.getUTCFullYear() - birthday.getUTCFullYear();
+    //If que verifica si se ha cumplido el mes y dia de nacimiento,
+    //Se le resta uno a la edad, ya que como solo se toman los años por la cantidad de años por pasar,
+    //entonces se resta uno si no se han cumplido
     if(fact.getUTCMonth() < birthday.getUTCMonth() || (fact.getUTCMonth() == birthday.getUTCMonth() && fact.getDate() < birthday.getDate())){
         edad= edad - 1;
     }
